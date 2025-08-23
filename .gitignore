@@ -1,0 +1,21 @@
+cat > .gitignore <<EOL
+# Node
+node_modules
+dist
+build
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+env/
+venv/
+
+# IDE
+.vscode/
+.idea/
+
+# Docker
+*.log
+EOL
