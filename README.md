@@ -20,109 +20,146 @@ This app allows users to enter text and convert it into speech using modern TTS 
 ---
 
 ## 📂 Project Structure
+
 text-to-speech/
 │── backend/ # FastAPI backend
 │ ├── main.py # API entry point
-│ ├── requirements.txt
-│ └── Dockerfile
+│ ├── requirements.txt # Python dependencies
+│ └── Dockerfile # Backend Dockerfile
 │
 │── frontend/ # React frontend
-│ ├── src/
-│ ├── package.json
-│ └── Dockerfile
+│ ├── src/ # React source code
+│ ├── package.json # Frontend dependencies
+│ └── Dockerfile # Frontend Dockerfile
 │
 │── nginx.conf # Nginx configuration
-│── docker-compose.yml
-│── README.md
+│── docker-compose.yml # Docker Compose setup
+│── README.md # Project documentation
 
 yaml
 Copy code
 
 ---
 
-## ⚡ Getting Started
+## 🚀 Getting Started
 
-### 1️⃣ Prerequisites
-- [Docker](https://docs.docker.com/get-docker/) installed
-- [Docker Compose](https://docs.docker.com/compose/install/)
-
-### 2️⃣ Run the Application
-From the project root, run:
+### 1️⃣ Clone the Repository
 ```bash
-docker-compose up -d
-Frontend → http://localhost:3000
+git clone https://github.com/yourusername/text-to-speech.git
+cd text-to-speech
+2️⃣ Run with Docker Compose
+bash
+Copy code
+docker-compose up --build
+This will:
 
-Backend → http://localhost:8000
+Build and start the FastAPI backend on port 8000
 
-3️⃣ Stop the Application
+Build and serve the React frontend on port 80 (via Nginx)
+
+3️⃣ Access the App
+Frontend: 👉 http://localhost
+
+Backend API: 👉 http://localhost:8000
+
+🛠 Development (Without Docker)
+Backend (FastAPI)
+bash
+Copy code
+cd backend
+pip install -r requirements.txt
+uvicorn main:app --reload
+Runs at 👉 http://localhost:8000
+
+Frontend (React + Vite)
+bash
+Copy code
+cd frontend
+npm install
+npm run dev
+Runs at 👉 http://localhost:5173
+
+📝 Available Scripts
+Backend
+uvicorn main:app --reload → Run development server
+
+pytest → Run tests (if configured)
+
+Frontend
+npm run dev → Start development server
+
+npm run build → Build production files
+
+npm run preview → Preview production build
+
+⚙️ Environment Variables
+Backend (backend/.env)
+env
+Copy code
+# Example
+API_KEY=your_api_key_here
+Frontend (frontend/.env)
+env
+Copy code
+VITE_API_URL=http://localhost:8000
+🐳 Docker Commands
+Build & start containers:
+
+bash
+Copy code
+docker-compose up --build
+Stop containers:
+
 bash
 Copy code
 docker-compose down
-🔄 Development Notes
-If you update the frontend (React):
-bash
-Copy code
-docker-compose build frontend
-docker-compose up -d
-If you update the backend (FastAPI):
-If --reload is enabled in Dockerfile, backend reloads automatically.
-Otherwise:
+Rebuild only backend:
 
 bash
 Copy code
 docker-compose build backend
-docker-compose up -d
-☁️ Deploying to Cloud
-Option 1: Docker Compose on VM
-Provision a VM (Ubuntu recommended).
-
-Install Docker & Docker Compose.
-
-Clone repo and run:
+docker-compose up backend
+Rebuild only frontend:
 
 bash
 Copy code
-docker-compose up -d
-Open ports 80, 3000, and 8000.
+docker-compose build frontend
+docker-compose up frontend
+📌 Notes
+Make sure Docker & Docker Compose are installed.
 
-Option 2: Deploy with Docker Image
-Build and tag image:
+Adjust nginx.conf and API URLs in .env if deploying to production.
 
-bash
-Copy code
-docker build -t text-to-speech-app .
-Push to Docker Hub:
+Logs can be checked using:
 
 bash
 Copy code
-docker tag text-to-speech-app your-dockerhub-username/text-to-speech
-docker push your-dockerhub-username/text-to-speech
-Run on any server:
+docker-compose logs -f
+🎯 Features
+🔊 Convert text into speech in multiple languages
 
-bash
-Copy code
-docker run -d -p 80:80 your-dockerhub-username/text-to-speech
-🛠️ Tech Stack
-React (Vite + Tailwind CSS)
+⚡ FastAPI backend for API processing
 
-FastAPI (Python 3.10+)
+🎨 Modern React frontend with Vite
 
-Docker & Docker Compose
+🐳 Fully containerized with Docker
 
-Nginx (reverse proxy)
+🌐 Nginx reverse proxy for production-ready setup
 
 📜 License
-This project is licensed under the MIT License.
-
-👩‍💻 Author
-Developed with ❤️ by Premal / Nidhi
+MIT License © 2025 Your Name
 
 yaml
 Copy code
 
 ---
 
-👉 Do you want me to also add **examples with screenshots** (frontend UI + API usage with `curl`)? That will make the README more polished for GitHub or cloud deployment.
+👉 You can **copy-paste this entire block** into your `README.md` and it will render properly with the structure and instructions.  
+
+Do you also want me to **add example API usage (curl/Postman request)** for the `/tts` endpoint in this README?
+
+
+
 
 
 
