@@ -292,8 +292,3 @@ Do you also want me to **add example API usage (curl/Postman request)** for the 
 
 
 
-
-
-
->>>>>>> f5d5c18745e9f6634f411493de120261eb326193
-
